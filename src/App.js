@@ -11,27 +11,41 @@ import Alert from "./component/alert";
 
 function App() {
   const [mode,setmode]=useState("light");
+const [alert,setalert]=useState(null);
+
+const show=(message,type)=>{
+  setalert({
+    msg:message,
+    type:type
+  })
+ setTimeout(()=>{
+  setalert(null)
+ },1000)
+}
   const toggle=()=>{
     if(mode=="dark"){
       setmode("light");
-      document.body.style.backgroundColor="White"
-      document.body.style.color="Black"
+      document.body.style.backgroundColor='white';
+      document.body.style.color="Black";
+    
+      show("Dark mode has been Enable","success : ");
     }else{
       setmode("dark");
       document.body.style.backgroundColor="black"
       document.body.style.color="white"
+      show("light mode has been Enable","success : ");
       
     }
 
   }
   return (
  <Router>
-    <Navbar title='Text_Util' mode={mode} handle={toggle} />
-   
+    <Navbar title='Text_Util' mode={mode} handle={toggle}  />
+      <Alert alert={alert} />
         <Routes>
-          <Route path="/" element={<div className="container"><Form heading="Enter Text To Analyze" mode={mode}/></div>} />
+          <Route exact path="/" element={<div className="container"><Form heading="Enter Text To Analyze" mode={mode} showalert={show} /></div>} />
           {/* <Route path="/Form" element={<div className="container"><Form heading="Enter Text To Analyze"/></div>} /> */}
-          <Route path="/typing" element={<Typing mode={mode}/>} />
+          <Route exact path="/typing" element={<Typing mode={mode}/>} />
         </Routes>
       </Router>
   );
