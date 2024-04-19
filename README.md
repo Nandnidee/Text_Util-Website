@@ -1,4 +1,4 @@
-# [Text Util Website](https://text-ut1ll.netlify.app/)
+# [Text Util Website](https://text-ut1l1ty.netlify.app/)
 
 Text Util is a simple and versatile text utility website that allows users to perform various text manipulation tasks. Users can enter text, and the website provides functionalities such as capitalization, lowercasing, word count, character count, and text copying.
 
